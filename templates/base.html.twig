@@ -12,8 +12,13 @@
     </head>
     <body>
         {% block body %}
+        
             {{include('header.html')}}
+            {{include('body.html')}}
+            {{include('footer.html')}}
         {% endblock %}
+
+
         {% block javascripts %}
         <script
         src="{{ asset('js/bootstrap.min.js') }}"
