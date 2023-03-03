@@ -1,0 +1,77 @@
+<!-- templates/base.html.twig -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Productos{% endblock %}</title>
+        {% block stylesheets %}
+                    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+        {% endblock %}
+    </head>
+    <body>
+        {{include("header.html")}}
+
+        {% block body %}
+
+        <header class="d-flex justify-content-between">
+        <h3>Productos</h3>
+        <form method="get" action={{path('productos')}}>
+          <label for="quantity">Cantidad:</label>
+    <input type="number" id="quantity" name="quantity" value={{ "quantity" }}>
+
+    <label for="min_price">Precio mínimo:</label>
+    <input type="number" id="min_price" name="min_price" value={{ "minPrice" }}
+
+    <label for="max_price">Precio máximo:</label>
+    <input type="number" id="max_price" name="max_price" value={{ "maxPrice" }}
+
+    <label for="taxes">Impuestos:</label>
+    <input type="number" id="taxes" name="taxes" value={{ "taxes" }}>
+
+    <button type="submit">Filtrar</button>
+        </form>
+        </header>
+        <section class="d-flex align-items-start flex-wrap justify-content-center gap-4">
+        {% block section %}
+        {%for producto in products.data %}
+        <div class=" d-flex flex-column  justify-content-between gap-2 card" style="width: 18rem;height:530px; 
+">
+        <img style="width:100%" src={{producto.image}} alt={{producto.name }} />
+            <div class="card-body d-flex flex-column  justify-content-between gap-2">
+                <h5 class="card-title">        {{producto.name}}
+</h5>
+    <div>
+                <p class="card-text overflow-auto" style="max-height:100px; height:min-content; 
+">
+                        {{producto.description}}
+</p>
+    </div>
+        <div class="d-flex flex-column justify-content-end gap-2">
+            <button href="#" class="btn btn-primary">Comprar</button>
+            <ul class="border-top">
+            <li><strong>${{producto.price}}</strong></li>
+            <li>Impuestos: ${{producto.taxes}}</li>
+            </ul>
+                </div>
+        </div>
+</div>
+
+        </div>
+
+       {%endfor%}
+       </section
+        {% endblock %}
+        {% endblock %}
+
+
+        {% block javascripts %}
+        <script
+        src="{{ asset('js/bootstrap.min.js') }}"
+        >
+    </script>
+        {% endblock %}
+    </body>
+    
+</html>
