@@ -15,24 +15,33 @@
 
         {% block body %}
 
-        <header class="d-flex justify-content-between">
-        <h3>Productos</h3>
-        <form method="get" action={{path('productos')}}>
-          <label for="quantity">Cantidad:</label>
-    <input type="number" id="quantity" name="quantity" value={{ "quantity" }}>
+        <form method="get" class='d-flex align-items-end mb-4 mt-4 justify-content-around' action={{path('productos')}}>
+          
+        <div class="form-group mr-2">
+            <label for="quantity" class="mr-2">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" value={{ "quantity" }} class="form-control">
+        </div>
 
-    <label for="min_price">Precio mínimo:</label>
-    <input type="number" id="min_price" name="min_price" value={{ "minPrice" }}
+        <div class="form-group mr-2">
+            <label for="min_price" class="mr-2">Precio mínimo:</label>
+            <input type="number" id="min_price" name="min_price" value={{ "minPrice" }} class="form-control">
+        </div>
 
-    <label for="max_price">Precio máximo:</label>
-    <input type="number" id="max_price" name="max_price" value={{ "maxPrice" }}
+        <div class="form-group mr-2">
+            <label for="max_price" class="mr-2">Precio máximo:</label>
+            <input type="number" id="max_price" name="max_price" value={{ "maxPrice" }} class="form-control">
+        </div>
 
-    <label for="taxes">Impuestos:</label>
-    <input type="number" id="taxes" name="taxes" value={{ "taxes" }}>
+        <div class="form-group mr-2">
+            <label for="taxes" class="mr-2">Impuestos:</label>
+            <input type="number" id="taxes" name="taxes" value={{ "taxes" }} class="form-control">
+        </div>
+        <div class="form-group mr-2">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
 
-    <button type="submit">Filtrar</button>
+        </div>
+
         </form>
-        </header>
         <section class="d-flex align-items-start flex-wrap justify-content-center gap-4">
         {% block section %}
         {%for producto in products.data %}
